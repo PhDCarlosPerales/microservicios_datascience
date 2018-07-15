@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model
+spec:
+  selector:
+    matchLabels:
+      run: model
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: model
+    spec:
+      containers:
+      - name: model
+        image: phdcarlosperales/model
+        ports:
+        - containerPort: 5000

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: canary
+spec:
+  selector:
+    matchLabels:
+      run: canary
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: canary
+    spec:
+      containers:
+      - name: canary
+        image: phdcarlosperales/canary
+        ports:
+        - containerPort: 5001

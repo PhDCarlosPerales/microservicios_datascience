@@ -1,0 +1,16 @@
+FROM python:3.6.6-slim-stretch
+
+COPY requirements.txt .
+RUN pip3 install --upgrade -r requirements.txt
+
+COPY 020_api 020_api
+COPY 010_model 010_model
+
+EXPOSE 5000 5000
+
+ENTRYPOINT [ "python3.6", "/020_api/flask_json_api.py" ]
+
+
+# scp -P 4444 -r C:\Users\soyperales\OneDrive\ModelDeployment\src carlos@localhost:/home/carlos
+# sudo docker build -t model -f Dockerfile_model .
+# sudo docker run -p 5000:5000 model

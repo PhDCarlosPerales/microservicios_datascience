@@ -1,0 +1,12 @@
+FROM python:3.6.6-slim-stretch
+
+COPY requirements.txt .
+RUN pip install --upgrade -r requirements.txt
+
+COPY 020_api 020_api
+
+ENTRYPOINT [ "python3.6", "/020_api/flask_elector.py" ]
+
+
+# sudo docker build -t elector -f Dockerfile_elector .
+# sudo docker run -p 5002:5002 elector

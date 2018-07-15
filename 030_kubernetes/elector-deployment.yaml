@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elector
+spec:
+  selector:
+    matchLabels:
+      run: elector
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: elector
+    spec:
+      containers:
+      - name: elector
+        image: phdcarlosperales/elector
+        ports:
+        - containerPort: 5002
